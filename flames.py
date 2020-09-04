@@ -1,32 +1,163 @@
-# Creating FLAMES game.
+# creating an hand game
 
-name1 = input("Enter the name1").lower()
-name2 = input("Enter the name2").lower()
-name1 = name1.replace(" ","")
-name2 = name2.replace(" ","")
-for i in name1:
-    for j in name2:
-        if i==j:
-            name1.replace(i,"",1)
-            name2.replace(j,"",1)
-            break
-count = len(name1+name2)
-print("The number of element is :",count)
-if count>0 :
-    list1 =["F","L","A","M","E","S"]
-    while len(list1)>1:
-        c = count%len(list1)
-        idx = c-1
-        if idx >= 0:
-            left = list1[:idx]
-            right = list1[idx+1:]
-            list1 = right+left
-        else:
-            list11 = list1[:len(list1)-1]
-    print(list1[0])
+import random
 
-else:
-    print(" enter an valid name")
+x1 = 1
+x2 = 1
+
+y1 = 1
+y2 = 1
+choice = random.randint(1,2)
+flag = True
+
+def player_one(x1 , x2):
+    global right_finger1 , left_finger1
+    right_finger1 = x1
+    left_finger1  = x2
+    return right_finger1 , left_finger1
+
+def player_two(y1 , y2):
+    global right_finger2 , left_finger2
+    right_finger2 = y1
+    left_finger2  = y2
+    return right_finger2 , left_finger2
+
+print("Initially the player one finger" , player_one(x1 , x2))
+print("Initially the player two finger" ,player_two(y1 , y2))
+
+def win():
+    if right_finger1 == 0 and left_finger1 == 0:
+        print("player two won")
+        flag = False
+    elif right_finger2 == 0 and left_finger2 == 0:
+        print("player one won the match")
+        flag = False
+
+    else:
+        pass
+    return
+def who_strtfirst():
+
+    if choice%2 == 0:
+        print("player one shall start the game")
+
+    else:
+        print("player two shall start the game")
+
+    return
+
+print(who_strtfirst())
+
+while flag:
+    if choice%2 == 0:
+        player_int = input("right or left")
+        if player_int in ["right","Right","r","R"]:
+            player_int = "y1"
+            y1 += 1
+
+            if y1 ==5:
+                y1 = 0
+            elif y1 == 6:
+                y1 = 1
+
+            elif y1 == 7:
+                y1 = 2
+
+            elif y1 == 8:
+                y1 = 3
+
+            elif y1 == 9:
+                y1 =4
+
+            elif y1 == 10:
+                y1 = 0
+                print("Y1 value is:", y1)
+
+
+        elif player_int in ["left","Left","L","l"]:
+            player_int = "y2"
+            y2 += 1
+            if y2 == 5:
+                y2 = 0
+            elif y2 == 6:
+                y2 = 1
+
+            elif y2 == 7:
+                y2 = 2
+
+            elif y2 == 8:
+                y2 = 3
+
+            elif y2 == 9:
+                y2 = 4
+
+            elif y2 == 10:
+                y2 = 0
+                print("Y1 value is:", y2)
+
+
+    if choice%2 != 0:
+        player_inT = input("right or left")
+        if player_inT in ["right", "Right", "r", "R"]:
+            player_inT = "x1"
+            x1 += 1
+            if x1 == 5:
+                x1 = 0
+            elif x1 == 6:
+                x1 = 1
+
+            elif x1== 7:
+                x1 = 2
+
+            elif x1 == 8:
+                x1 = 3
+
+            elif x1 == 9:
+                x1 = 4
+
+            elif x1 == 10:
+                x1 = 0
+            print(" X1 value is :",x1)
+
+        elif player_inT in ["left", "Left", "L", "l"]:
+            player_inT = "x2"
+            x2 += 1
+            if x2 == 5:
+                x2 = 0
+            elif x2 == 6:
+                x2 = 1
+
+            elif x2 == 7:
+                x2 = 2
+
+            elif x2 == 8:
+                x2 = 3
+
+            elif x2 == 9:
+                x2 = 4
+
+            elif x2 == 10:
+                x2 = 0
+            print(" X2 value is :",x2)
+
+    win()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
